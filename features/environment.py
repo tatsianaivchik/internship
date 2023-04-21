@@ -1,0 +1,37 @@
+from selenium import webdriver
+from selenium.webdriver.support.wait import WebDriverWait
+from selenium.webdriver.chrome.service import Service
+from app.application import Application
+
+
+def browser_init(context):
+    """
+    :param context: Behave context
+    """
+    service = Service('/Users/TANYA/QA_Automation/internship/chromedriver')
+    context.driver = webdriver.Chrome(service=service)
+    context.app = Application(driver=context.driver)
+
+    #context.driver.implicitly_wait(0)
+    # context.driver.wait = WebDriverWait(context.driver, 5)
+    context.driver.maximize_window()
+
+
+
+
+def before_scenario(context, scenario):
+    print('\nStarted scenario: ', scenario.name)
+    browser_init(context)
+
+
+def before_step(context, step):
+    print('\nStarted step: ', step)
+
+
+def after_step(context, step):
+    if step.status == 'failed':
+        print('\nStep failed: ', step)
+
+
+def after_scenario(context, feature):
+    context.driver.quit()
