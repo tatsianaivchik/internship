@@ -24,7 +24,7 @@ class Page:
         e.clear()
         e.send_keys(text)
 
-    def wait_for_element_click(self, *locator):
+    def wait_for_element_click(self, locator):
         e = self.wait.until(EC.element_to_be_clickable(locator), message=f'Element not clickable by {locator}')
         e.click()
 

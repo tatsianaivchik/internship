@@ -6,6 +6,7 @@ class Header(Page):
     SEARCH_FIELD = (By.ID, 'Search-In-Modal')
     SEARCH_RESULT = (By.CSS_SELECTOR, '#predictive-search-results-list li a[href*="{TEXT}"]')
     SEARCH_FOR_BUTTON = (By.ID, 'predictive-search-option-search-keywords')
+    SEARCH_PRODUCT_ITEM = (By.CSS_SELECTOR, '#predictive-search-option-1 span.h4')
     def click_on_search(self):
         self.click(*self.SEARCH_ICON)
 
@@ -20,6 +21,7 @@ class Header(Page):
         self.wait_for_element_appear(locator)
 
         self.verify_partial_text(text, *self.SEARCH_FOR_BUTTON)
-
         self.click(*self.SEARCH_FOR_BUTTON)
 
+    def click_on_first_product(self):
+        self.wait_for_element_appear(self.SEARCH_PRODUCT_ITEM).click()

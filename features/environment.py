@@ -12,7 +12,7 @@ def browser_init(context):
     context.driver = webdriver.Chrome(service=service)
     context.app = Application(driver=context.driver)
 
-    #context.driver.implicitly_wait(0)
+    context.driver.implicitly_wait(5)
     # context.driver.wait = WebDriverWait(context.driver, 5)
     context.driver.maximize_window()
 

@@ -20,9 +20,15 @@ def input_search_text(context, text):
     context.app.header.input_search_text(text)
 
 
+@when('Click on first product')
+def click_on_product(context):
+    context.app.header.click_on_first_product()
+
+
 @then('Verify {text} item(s) is shown')
 def verify_search_text_shown(context, text):
     context.app.header.verify_text_search(text)
     context.app.search_result.verify_search_result(text)
+
 
 
