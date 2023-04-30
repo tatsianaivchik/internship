@@ -2,11 +2,12 @@ from pages.base_page import Page
 from selenium.webdriver.common.by import By
 
 class Header(Page):
-    SEARCH_ICON = (By.CSS_SELECTOR, 'search-modal.header__search')
+    SEARCH_ICON = (By.CSS_SELECTOR, 'search-modal.header__search summary.header__icon--search')
     SEARCH_FIELD = (By.ID, 'Search-In-Modal')
     SEARCH_RESULT = (By.CSS_SELECTOR, '#predictive-search-results-list li a[href*="{TEXT}"]')
     SEARCH_FOR_BUTTON = (By.ID, 'predictive-search-option-search-keywords')
     SEARCH_PRODUCT_ITEM = (By.CSS_SELECTOR, '#predictive-search-option-1 span.h4')
+
     def click_on_search(self):
         self.click(*self.SEARCH_ICON)
 

@@ -1,4 +1,5 @@
 from behave import given, when, then
+from time import sleep
 
 @given('Open CURESKIN main page')
 def open_main_page(context):
@@ -7,11 +8,15 @@ def open_main_page(context):
 
 @when('Close pop up window')
 def close_pop_up(context):
+    #firefox
+    sleep(5)
     context.app.main_page.close_pop_up()
 
 
 @when('Click on search icon')
 def click_on_search_icon(context):
+    # firefox
+    sleep(5)
     context.app.header.click_on_search()
 
 
@@ -22,13 +27,15 @@ def input_search_text(context, text):
 
 @when('Click on first product')
 def click_on_product(context):
+    # firefox
+    sleep(5)
     context.app.header.click_on_first_product()
 
 
 @then('Verify {text} item(s) is shown')
 def verify_search_text_shown(context, text):
     context.app.header.verify_text_search(text)
-    context.app.search_result.verify_search_result(text)
+    context.app.search_result_page.verify_search_result(text)
 
 
 
