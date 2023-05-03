@@ -4,14 +4,16 @@ from selenium.webdriver.chrome.service import Service
 # from selenium.webdriver.firefox.service import Service
 from app.application import Application
 
+# Allure command:
+# behave -f allure_behave.formatter:AllureFormatter -o test_results/ features/tests/product_page.feature
 
 def browser_init(context, test_name):
     """
     :param context: Behave context
     """
-    # service = Service('/Users/TANYA/QA_Automation/internship/chromedriver')
+    service = Service('/Users/TANYA/QA_Automation/internship/chromedriver')
     # service = Service('/Users/TANYA/QA_Automation/internship/geckodriver')
-    # context.driver = webdriver.Chrome(service=service)
+    context.driver = webdriver.Chrome(service=service)
     # context.driver = webdriver.Firefox(service=service)
 
      ## HEADLESS MODE CHROME####
@@ -28,19 +30,19 @@ def browser_init(context, test_name):
 
     # for browerstack ###
     # Register for BrowserStack, then grab it from https://www.browserstack.com/accounts/settings
-    bs_user = 'tanyai_bTmr7F'
-    bs_key = 'pXqnZeDdae6Zu87rfJee'
-
-    desired_cap = {
-        'browserName': 'Chrome',  # Safari or FireFox
-        'bstack:options': {
-            'os': 'Windows',
-            'osVersion': '11',
-            'sessionName': test_name
-        }
-    }
-    url = f'http://{bs_user}:{bs_key}@hub-cloud.browserstack.com/wd/hub'
-    context.driver = webdriver.Remote(url, desired_capabilities=desired_cap)
+    # bs_user = 'tanyai_bTmr7F'
+    # bs_key = 'pXqnZeDdae6Zu87rfJee'
+    #
+    # desired_cap = {
+    #     'browserName': 'Chrome',  # Safari or FireFox
+    #     'bstack:options': {
+    #         'os': 'Windows',
+    #         'osVersion': '11',
+    #         'sessionName': test_name
+    #     }
+    # }
+    # url = f'http://{bs_user}:{bs_key}@hub-cloud.browserstack.com/wd/hub'
+    # context.driver = webdriver.Remote(url, desired_capabilities=desired_cap)
 
     context.driver.maximize_window()
     context.driver.implicitly_wait(5)

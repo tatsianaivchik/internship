@@ -9,14 +9,14 @@ def open_main_page(context):
 @when('Close pop up window')
 def close_pop_up(context):
     #firefox
-    sleep(5)
+    # sleep(5)
     context.app.main_page.close_pop_up()
 
 
 @when('Click on search icon')
 def click_on_search_icon(context):
     # firefox
-    sleep(5)
+    # sleep(5)
     context.app.header.click_on_search()
 
 
@@ -28,7 +28,7 @@ def input_search_text(context, text):
 @when('Click on first product')
 def click_on_product(context):
     # firefox
-    sleep(5)
+    # sleep(5)
     context.app.header.click_on_first_product()
 
 
