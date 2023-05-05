@@ -1,4 +1,5 @@
 from pages.base_page import Page
+from time import sleep
 from selenium.webdriver.common.by import By
 
 class Header(Page):
@@ -9,10 +10,13 @@ class Header(Page):
     SEARCH_PRODUCT_ITEM = (By.CSS_SELECTOR, '#predictive-search-option-1 span.h4')
 
     def click_on_search(self):
-        self.click(*self.SEARCH_ICON)
+        # self.click(*self.SEARCH_ICON)
+        search_icon = self.find_elements(*self.SEARCH_ICON)
+        search_icon[1].click()
 
     def input_search_text(self, text):
-        self.input_text(text, *self.SEARCH_FIELD)
+        search_field_input = self.find_elements(*self.SEARCH_FIELD)
+        search_field_input[1].send_keys(text)
 
     def get_search_text_locator(self, text):
         return [self.SEARCH_RESULT[0], self.SEARCH_RESULT[1].replace("{TEXT}", text)]

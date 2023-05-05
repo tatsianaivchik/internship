@@ -12,5 +12,7 @@ class CartPage(Page):
 
     def verify_product_name_n_price(self):
         self.verify_text(self.driver.product_name, *self.PRODUCT_NAME)
-        self.verify_text(self.driver.product_price, *self.PRODUCT_PRICE)
+        product_price_in_cart = self.find_elements(*self.PRODUCT_PRICE)
+        assert product_price_in_cart[1].text == self.driver.product_price
+        # self.verify_text(self.driver.product_price, *self.PRODUCT_PRICE)
 
